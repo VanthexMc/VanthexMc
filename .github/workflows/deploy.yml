@@ -22,8 +22,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # Il sito funziona sia con indirizzo del tipo utente.github.io/NOME/ sia se il repository
-      # si chiama utente.github.io o se hai un dominio personalizzato (file public/CNAME).
       - name: Calcola il percorso base
         run: |
           REPO="${GITHUB_REPOSITORY#*/}"
@@ -36,8 +34,6 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      # GitHub Pages non conosce le rotte di React: 404.html = index.html
-      # così /<repository>/regolamento funziona anche se la pagina viene ricaricata.
       - name: Fallback SPA
         run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
