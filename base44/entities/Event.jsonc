@@ -1,0 +1,59 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Titolo dell'evento o dell'aggiornamento"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data dell'evento"
+    },
+    "time": {
+      "type": "string",
+      "description": "Orario dell'evento (opzionale)"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Torneo",
+        "Aggiornamento",
+        "Evento"
+      ],
+      "default": "Evento",
+      "description": "Tipo di pubblicazione"
+    },
+    "description": {
+      "type": "string",
+      "description": "Descrizione dell'evento"
+    },
+    "link": {
+      "type": "string",
+      "description": "Link di riferimento, ad esempio Discord (opzionale)"
+    }
+  },
+  "required": [
+    "title",
+    "date"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
