@@ -6,13 +6,13 @@ const TEAM = [
   {
     name: "Xyrvane",
     role: "Founder & CEO",
-    skin: "https://mc-heads.net/avatar/Xyrvane",
+    skin: "https://minotar.net/avatar/Xyrvane/128",
     desc: "La mente e il volto del progetto. Visionario e leader, guida VanthexMc e ne coordina ogni aspetto.",
   },
   {
     name: "ThePenguinYT_",
     role: "Founder",
-    skin: "https://mc-heads.net/avatar/ThePenguinYT_",
+    skin: "https://minotar.net/avatar/ThePenguinYT_/128",
     desc: "Co-fondatore e anima creativa. Porta energia, contenuti e la passione YouTube/TikTok dentro il progetto. Sempre presente per la community.",
   },
 ];
