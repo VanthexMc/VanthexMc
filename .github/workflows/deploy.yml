@@ -1,0 +1,55 @@
+name: Deploy su GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Il sito funziona sia con indirizzo del tipo utente.github.io/NOME/ sia se il repository
+      # si chiama utente.github.io o se hai un dominio personalizzato (file public/CNAME).
+      - name: Calcola il percorso base
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          if [ -f public/CNAME ] || [[ "$REPO" == *.github.io ]]; then
+            echo "VITE_BASE_PATH=/" >> "$GITHUB_ENV"
+          else
+            echo "VITE_BASE_PATH=/$REPO/" >> "$GITHUB_ENV"
+          fi
+      - name: Installa dipendenze
+        run: npm install
+      - name: Build
+        run: npm run build
+      # GitHub Pages non conosce le rotte di React: 404.html = index.html
+      # così /<repository>/regolamento funziona anche se la pagina viene ricaricata.
+      - name: Fallback SPA
+        run: cp dist/index.html dist/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
