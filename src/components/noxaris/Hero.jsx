@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Copy, Check, MessageCircle, Gamepad2 } from "lucide-react";
 import Particles from "./Particles";
 
-const SERVER_IP = "play.vanthexmc.it";
+const SERVER_IP = "Coming Soon";
 const LOGO = import.meta.env.BASE_URL + "logo.webp";
 const HERO_BG = "https://media.base44.com/images/public/6ac3b2cd1c34669978cf7ac9/c4812a255_generated_9899585d.jpg";
 
@@ -57,8 +57,8 @@ export default function Hero() {
         </div>
 
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#8B5CF6]/40 bg-[#1A0B2E]/60 backdrop-blur-sm mb-6">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-sm text-[#E0D4FF]">Server Online · Survival</span>
+          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
+          <span className="text-sm text-[#E0D4FF]">Server Offline · Smp</span>
         </div>
 
         <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-white text-glow mb-4">
