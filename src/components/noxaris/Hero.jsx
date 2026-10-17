@@ -57,8 +57,8 @@ export default function Hero() {
         </div>
 
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#8B5CF6]/40 bg-[#1A0B2E]/60 backdrop-blur-sm mb-6">
-          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-          <span className="text-sm text-[#E0D4FF]">Server Offline · Smp</span>
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="text-sm text-[#E0D4FF]">Server Online · Smp</span>
         </div>
 
         <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-white text-glow mb-4">
